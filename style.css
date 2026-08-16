@@ -1,0 +1,349 @@
+:root {
+  --navy: #0a1f44;
+  --navy-light: #12305e;
+  --blue: #1e6fd9;
+  --green: #2fb344;
+  --green-light: #e8f8ea;
+  --bg: #ffffff;
+  --bg-soft: #f5f8fc;
+  --text: #14213d;
+  --text-soft: #4b5b76;
+  --border: #e3e9f2;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 68px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+}
+
+.logo-mark {
+  font-size: 26px;
+  color: var(--green);
+}
+
+.logo-text {
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-sub {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--green);
+  letter-spacing: 1.5px;
+}
+
+.nav {
+  display: flex;
+  gap: 28px;
+}
+
+.nav a {
+  color: #dbe4f5;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.nav a:hover { color: var(--green); }
+
+.header-cta {
+  white-space: nowrap;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn-primary {
+  background: var(--green);
+  color: #fff;
+}
+
+.btn-primary:hover { box-shadow: 0 8px 20px rgba(47,179,68,0.35); }
+
+.btn-ghost {
+  background: transparent;
+  border-color: #cdd7e6;
+  color: var(--navy);
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: #fff;
+}
+
+.btn-whatsapp:hover { box-shadow: 0 8px 20px rgba(37,211,102,0.35); }
+
+/* Hero */
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 55%, var(--blue) 130%);
+  color: #fff;
+  padding: 88px 0 72px;
+}
+
+.hero-inner { text-align: center; }
+
+.badge {
+  display: inline-block;
+  background: rgba(47,179,68,0.18);
+  color: #7de08a;
+  border: 1px solid rgba(47,179,68,0.4);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 800;
+  max-width: 780px;
+  margin: 0 auto 18px;
+}
+
+.hero .accent { color: var(--green); }
+
+.hero-sub {
+  max-width: 560px;
+  margin: 0 auto 32px;
+  color: #c7d3e8;
+  font-size: 16px;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-actions .btn-ghost {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.35);
+  color: #fff;
+}
+
+/* Beneficios */
+.beneficios {
+  background: var(--green-light);
+  padding: 44px 0;
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+.beneficio-icon { font-size: 30px; }
+
+.beneficio h3 { color: var(--navy); font-size: 18px; }
+
+.beneficio p { margin: 0; color: var(--text-soft); }
+
+/* Servicios */
+.servicios { padding: 72px 0; }
+
+.servicios h2, .marcas h2, .cotiza h2 {
+  text-align: center;
+  font-size: 28px;
+  color: var(--navy);
+  margin-bottom: 40px;
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.servicio-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 18px;
+  text-align: center;
+}
+
+.servicio-icon {
+  font-size: 26px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.servicio-card p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 14px;
+}
+
+/* Marcas */
+.marcas {
+  background: var(--bg-soft);
+  padding: 72px 0;
+}
+
+.marcas-subtitle {
+  color: var(--navy);
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 28px 0 14px;
+}
+
+.marcas-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.marca-chip {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--navy);
+}
+
+/* Cotiza */
+.cotiza {
+  padding: 64px 0;
+}
+
+.cotiza-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.cotiza-icon { font-size: 40px; }
+
+.cotiza h2 { text-align: left; color: #fff; margin-bottom: 12px; }
+
+.cotiza p { color: #c7d3e8; margin-bottom: 20px; }
+
+.cotiza strong { color: #fff; }
+
+/* Footer */
+.site-footer {
+  background: var(--navy);
+  color: #c7d3e8;
+  padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-logo { color: #fff; }
+
+.footer-tagline {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.footer-info p { margin: 4px 0; font-size: 14px; }
+
+.footer-info a:hover { color: var(--green); }
+
+/* Responsive */
+@media (max-width: 760px) {
+  .nav { display: none; }
+  .nav-toggle { display: block; }
+  .header-cta { display: none; }
+  .beneficios-grid { grid-template-columns: 1fr; }
+  .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+  .cotiza-inner { flex-direction: column; border-radius: 16px; padding: 28px; }
+  .footer-inner { flex-direction: column; }
+}
+
+.nav.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: var(--navy);
+  padding: 16px 24px;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
