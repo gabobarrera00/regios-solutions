@@ -24,6 +24,7 @@ export default function Header() {
         </a>
 
         <nav
+          id="nav"
           className={`${
             open
               ? "flex flex-col absolute top-[68px] left-0 right-0 bg-brand-navy px-6 py-4 gap-4 border-b border-white/[0.08]"
@@ -46,7 +47,7 @@ export default function Header() {
           href="https://wa.me/528112095779"
           target="_blank"
           rel="noopener"
-          className="hidden md:inline-block whitespace-nowrap bg-[#25d366] text-white px-[22px] py-3 rounded-full font-bold text-sm border-2 border-transparent transition-transform hover:-translate-y-px hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)]"
+          className="hidden md:inline-block whitespace-nowrap bg-[#25d366] text-on-whatsapp px-[22px] py-3 rounded-full font-bold text-sm border-2 border-transparent transition-transform hover:-translate-y-px hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)]"
         >
           WhatsApp
         </a>
@@ -54,6 +55,8 @@ export default function Header() {
         <button
           type="button"
           aria-label="Abrir menú"
+          aria-expanded={open}
+          aria-controls="nav"
           onClick={() => setOpen((o) => !o)}
           className="block md:hidden bg-transparent border-none text-white cursor-pointer"
         >

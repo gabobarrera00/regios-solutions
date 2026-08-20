@@ -7,7 +7,7 @@ export default {
         md: "760px",
       },
       fontFamily: {
-        sans: ['"Segoe UI"', "system-ui", "-apple-system", "sans-serif"],
+        sans: ["system-ui", "-apple-system", '"Segoe UI"', "Roboto", "sans-serif"],
       },
       colors: {
         "brand-navy": "#0a1f44",
@@ -19,6 +19,8 @@ export default {
         "brand-text": "#14213d",
         "brand-text-soft": "#4b5b76",
         "brand-border": "#e3e9f2",
+        "on-green": "#08240f",
+        "on-whatsapp": "#0b2e13",
       },
     },
   },

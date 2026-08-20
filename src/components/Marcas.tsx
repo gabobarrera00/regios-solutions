@@ -12,30 +12,30 @@ export default function Marcas() {
         <h3 className="text-brand-navy text-[15px] uppercase tracking-[1px] mt-7 mb-3.5">
           Paneles solares
         </h3>
-        <div className="flex flex-wrap gap-2.5">
+        <ul className="flex flex-wrap gap-2.5 list-none m-0 p-0">
           {PANELES.map((marca) => (
-            <span
+            <li
               key={marca}
               className="bg-white border border-brand-border rounded-full px-[18px] py-2 font-bold text-sm text-brand-navy"
             >
               {marca}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <h3 className="text-brand-navy text-[15px] uppercase tracking-[1px] mt-7 mb-3.5">
           Inversores
         </h3>
-        <div className="flex flex-wrap gap-2.5">
+        <ul className="flex flex-wrap gap-2.5 list-none m-0 p-0">
           {INVERSORES.map((marca) => (
-            <span
+            <li
               key={marca}
               className="bg-white border border-brand-border rounded-full px-[18px] py-2 font-bold text-sm text-brand-navy"
             >
               {marca}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

@@ -13,3 +13,27 @@ a {
 h1, h2, h3 {
   @apply leading-[1.2] m-0 mb-3;
 }
+
+html {
+  scroll-padding-top: 84px;
+}
+
+:focus-visible {
+  outline: 3px solid #1e6fd9;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+header :focus-visible,
+.hero-section :focus-visible,
+.cotiza-section :focus-visible,
+footer :focus-visible {
+  outline-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

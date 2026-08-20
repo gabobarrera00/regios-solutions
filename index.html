@@ -8,6 +8,45 @@
       name="description"
       content="Venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, Nuevo León. 18 años de experiencia. Cotización sin compromiso."
     />
+
+    <link rel="canonical" href="https://regios-solutions.vercel.app/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Regios Tech Solutions" />
+    <meta property="og:url" content="https://regios-solutions.vercel.app/" />
+    <meta property="og:title" content="Energía solar para tu hogar — Regios Tech Solutions" />
+    <meta
+      property="og:description"
+      content="Venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, N.L. 18 años de experiencia. Cotiza por WhatsApp sin compromiso."
+    />
+    <!-- FALTA og:image — un PNG/JPG de 1200x630px con logo + foto de instalación real. Ver AUDITORIA.md en master. -->
+    <meta name="twitter:card" content="summary" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Regios Tech Solutions",
+        "description": "Venta, instalación y mantenimiento de sistemas fotovoltaicos.",
+        "url": "https://regios-solutions.vercel.app/",
+        "telephone": "+528112095779",
+        "areaServed": "Guadalupe, Nuevo León, México",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Guadalupe",
+          "addressRegion": "Nuevo León",
+          "addressCountry": "MX"
+        },
+        "makesOffer": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalación de sistemas fotovoltaicos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento de sistemas fotovoltaicos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestión de trámite CFE" } }
+        ]
+      }
+    </script>
+    <!-- TODO pedirle a Pablo y agregar arriba: streetAddress, postalCode, geo (lat/long), openingHoursSpecification, image -->
+    <!-- TODO: og:url / og:image / canonical apuntan a Vercel; actualizar cuando el dominio de Railway (Task 10) esté confirmado. -->
   </head>
   <body>
     <div id="root"></div>
