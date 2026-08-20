@@ -44,7 +44,7 @@ export default function Header() {
         </nav>
 
         <a
-          href="https://wa.me/528112095779"
+          href="https://wa.me/528112095779?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20informaci%C3%B3n%20sobre%20instalaci%C3%B3n%20de%20paneles%20solares."
           target="_blank"
           rel="noopener"
           className="hidden md:inline-block whitespace-nowrap bg-[#25d366] text-on-whatsapp px-[22px] py-3 rounded-full font-bold text-sm border-2 border-transparent transition-[transform,box-shadow] hover:-translate-y-px hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)]"

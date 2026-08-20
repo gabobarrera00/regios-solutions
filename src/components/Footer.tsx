@@ -22,7 +22,7 @@ export default function Footer() {
           <p className="my-1 text-sm">Ing. Pablo Góngora</p>
           <p className="my-1 text-sm">
             <a
-              href="https://wa.me/528112095779"
+              href="https://wa.me/528112095779?text=Hola%2C%20vi%20su%20p%C3%A1gina%20en%20la%20secci%C3%B3n%20de%20contacto%20y%20quiero%20hablar%20sobre%20instalaci%C3%B3n%20de%20paneles%20solares."
               target="_blank"
               rel="noopener"
               className="flex items-center gap-1.5 hover:text-brand-green"

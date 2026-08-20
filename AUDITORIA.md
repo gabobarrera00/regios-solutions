@@ -196,11 +196,11 @@ Cambios quirúrgicos, para que veas cómo se ve el arreglo. **No arreglé todo a
 - [ ] Producir el `og:image` de 1200×630 y enlazarlo
 - [ ] Conseguir de Pablo dirección, coordenadas y horario → completar el JSON-LD
 - [ ] Los once emojis restantes → SVG
-- [ ] Apagar GitHub Pages, dejar solo Vercel, arreglar el campo *homepage*
+- [x] Apagar GitHub Pages, dejar solo Vercel, arreglar el campo *homepage* — 2026-08-20 (terminó siendo Railway, no Vercel — ver README)
 - [ ] Seis fotos reales, con `loading="lazy"`, `width`/`height` y `alt`
-- [ ] `?text=` distinto en los otros cuatro botones de WhatsApp
-- [ ] Instalar analítica y marcar el clic a WhatsApp como evento
-- [ ] Favicon
+- [x] `?text=` distinto en los otros botones de WhatsApp — 2026-08-20 (nota: solo eran **dos** restantes, Header y Footer — el sitio nunca tuvo cinco enlaces, tenía tres desde el vanilla original; el hallazgo original decía "cuatro" pero no cuadraba con el código)
+- [ ] Instalar analítica y marcar el clic a WhatsApp como evento — pendiente de que Gabo elija y cree la cuenta (Plausible/Umami/Vercel Analytics); el código para marcar el evento de clic se agrega en cuanto haya un site-id
+- [x] Favicon — 2026-08-20 (`public/favicon.svg`, sol verde sobre navy, mismos tokens de marca que el logo del header)
 - [ ] Menú móvil que funcione sin JavaScript
 - [ ] Sugerirle a Pablo el perfil de Google Business y un dominio propio
 
