@@ -1,6 +1,6 @@
 # Regios Tech Solutions — Landing Page
 
-**Live:** https://regios-solutions-production.up.railway.app
+**Live:** https://regios-solutions.up.railway.app
 
 Sitio de una página para **Regios Tech Solutions** (Ing. Pablo Góngora), negocio de venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, Nuevo León.
 
