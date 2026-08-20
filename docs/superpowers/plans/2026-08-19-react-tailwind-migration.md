@@ -1010,3 +1010,196 @@ git push
 ```
 
 - [ ] **Step 4: Update the vault project note** — outside this repo, in `~/aios/vault/00 - notes/projects/experiment-paginas-web.md`: mark the "Stack recomendado por tío Chuy" to-do as done for Regios (Vaconsa still pending, per the design spec's explicit scope), update the `Code`/`Stack`/`Orient` fields in the Current State table, and add a Session Notes entry linking to the design spec and plan. Commit via `aios-commit`, not a raw `git commit` (per the vault's `CLAUDE.md` — never `git add -A` in the vault repo; commit only the changed project-note path).
+
+---
+
+### Task 12: Port tío Chuy's applied audit fixes from `master` into the React build
+
+**Context (added after Task 11 planning, before this task ran):** Gabo's tío Chuy opened a real code-review PR (`gabobarrera00/regios-solutions#1`, merged into `master` at `c8bb115`) against the *original vanilla HTML/CSS/JS* version of this site — written and merged while this React migration was in progress on a separate branch. His PR applied 8 concrete fixes (documented in `AUDITORIA.md`, now on `master`) as *examples*, deliberately leaving the rest as follow-up work for Gabo. Because this migration branch already deleted the vanilla files Chuy's PR touches, his fixes can't be pulled in with a normal `git merge` — they need to be re-applied by hand to the equivalent React/Tailwind code. This task ports every one of his 8 applied fixes that is a pure code/structure change; it does NOT port the "queda para ti" (up to Gabo) follow-up items (favicon, real photos, analytics, the remaining 4 WhatsApp `?text=` prefills, GitHub Pages settings) — those stay out of scope here, same as they were out of scope for Chuy's own PR.
+
+**One item does not need porting:** Chuy's fix #4 (convert 3 of 14 emoji icons to SVG, as a partial example) is fully superseded — this migration already replaced all 14 icons with `lucide-react` SVGs in Tasks 2-8. No action needed.
+
+**One item does not apply:** Chuy's fix #6a (move `.nav.open` inside the mobile media query, because it had higher CSS specificity than `.nav { display:none }` and stayed visible on desktop after a resize) is a bug specific to hand-written CSS specificity. `Header.tsx`'s React implementation uses Tailwind's `md:` responsive variants, which are compiled with guaranteed cascade order regardless of component state — the equivalent bug cannot occur. No action needed, but note it in the report so the controller isn't left wondering why it's missing.
+
+**Files:**
+- Modify: `tailwind.config.js` (font stack order fix, two new named colors)
+- Modify: `src/index.css` (scroll-padding-top, focus-visible, prefers-reduced-motion)
+- Modify: `src/components/Header.tsx` (WhatsApp button text color, `aria-expanded`/`aria-controls`/`id="nav"`)
+- Modify: `src/components/Hero.tsx` (primary CTA text color)
+- Modify: `src/components/Cotiza.tsx` (WhatsApp CTA text color, `?text=` prefill)
+- Modify: `src/components/Marcas.tsx` (chips as a semantic `<ul>/<li>` list)
+- Modify: `index.html` (canonical link, Open Graph tags, twitter:card, `LocalBusiness` JSON-LD)
+
+**Interfaces:**
+- Consumes: the finished `App` composition from Task 8, unchanged component export names.
+- Produces: no new interfaces — every change here is inside existing components' JSX/className/attributes.
+
+- [ ] **Step 1: Fix the font stack order and add two contrast-safe text colors in `tailwind.config.js`**
+
+Chuy's finding: `"Segoe UI"` (Windows-only) was listed before the generic `system-ui`, so macOS/iOS ignored it and fell through — the system font should come first, brand-specific fonts as fallback. Also add `on-green`/`on-whatsapp`: dark ink colors to use as *text* color on top of the brand-green and WhatsApp-green backgrounds — white text on both fails WCAG AA contrast (measured 2.74:1 and 1.98:1; minimum is 4.5:1). These dark inks measure 6.03:1 and 7.49:1 with the button still reading as the same green.
+
+Update the `extend` block:
+
+```js
+      screens: {
+        md: "760px",
+      },
+      fontFamily: {
+        sans: ["system-ui", "-apple-system", '"Segoe UI"', "Roboto", "sans-serif"],
+      },
+      colors: {
+        "brand-navy": "#0a1f44",
+        "brand-navy-light": "#12305e",
+        "brand-blue": "#1e6fd9",
+        "brand-green": "#2fb344",
+        "brand-green-light": "#e8f8ea",
+        "brand-bg-soft": "#f5f8fc",
+        "brand-text": "#14213d",
+        "brand-text-soft": "#4b5b76",
+        "brand-border": "#e3e9f2",
+        "on-green": "#08240f",
+        "on-whatsapp": "#0b2e13",
+      },
+```
+
+- [ ] **Step 2: Add global accessibility/motion CSS to `src/index.css`**
+
+Three additions Chuy's PR made to the original `style.css`, all global (not per-component): `scroll-padding-top` so anchor-linked sections don't land hidden under the sticky 68px header, a visible `:focus-visible` ring for keyboard navigation (with a white variant inside the navy-background sections), and a `prefers-reduced-motion` block that disables transitions/animations for users whose OS requests it.
+
+Add after the existing `h1, h2, h3` rule:
+
+```css
+html {
+  scroll-padding-top: 84px;
+}
+
+:focus-visible {
+  outline: 3px solid #1e6fd9;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+header :focus-visible,
+.hero-section :focus-visible,
+.cotiza-section :focus-visible,
+footer :focus-visible {
+  outline-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+```
+
+Note: the white-outline override above targets `.hero-section` and `.cotiza-section` — since `Hero.tsx` and `Cotiza.tsx` currently render a bare `<section>` with no distinguishing class, add `className="hero-section ..."` and `className="cotiza-section ..."` (appended to their existing className, alongside their other classes) so this selector has something to match. `header` and `footer` already match by tag name.
+
+- [ ] **Step 3: Update `src/components/Header.tsx`** — WhatsApp button contrast, `aria-expanded`, `id="nav"`
+
+In the WhatsApp CTA `<a>` (the one with `bg-[#25d366]`), change `text-white` to `text-on-whatsapp`.
+
+Add `id="nav"` to the `<nav>` element (it doesn't have one currently).
+
+On the toggle `<button>`, add two attributes reflecting the open/closed state and what it controls:
+
+```tsx
+<button
+  type="button"
+  aria-label="Abrir menú"
+  aria-expanded={open}
+  aria-controls="nav"
+  onClick={() => setOpen((o) => !o)}
+  className="block md:hidden bg-transparent border-none text-white cursor-pointer"
+>
+```
+
+Also add `className="hero-section ..."` is NOT needed here — Header isn't in the navy-outline-override list above, skip.
+
+- [ ] **Step 4: Update `src/components/Hero.tsx`** — primary CTA contrast, section class hook
+
+In the "Cotización sin compromiso" `<a>` (the one with `bg-brand-green`), change `text-white` to `text-on-green`.
+
+Add `hero-section` to the outer `<section>`'s className (prepend or append, doesn't matter — e.g. `className="hero-section bg-[linear-gradient(...)] ..."`) so Step 2's focus-visible override applies here.
+
+- [ ] **Step 5: Update `src/components/Cotiza.tsx`** — WhatsApp CTA contrast, prefilled message, section class hook
+
+In the "Enviar por WhatsApp" `<a>` (the one with `bg-[#25d366]`):
+- Change `text-white` to `text-on-whatsapp`
+- Change the `href` from `https://wa.me/528112095779` to the exact prefilled URL Chuy used (this is a direct 1:1 port of his own applied example, not a new content decision):
+  `https://wa.me/528112095779?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20una%20cotizaci%C3%B3n.%20Le%20env%C3%ADo%20la%20foto%20de%20mi%20recibo%20de%20CFE.`
+
+Add `cotiza-section` to the outer `<section>`'s className, same reason as Step 4.
+
+Leave the Header's WhatsApp button and Footer's WhatsApp link exactly as they are (plain `https://wa.me/528112095779`, no `?text=`) — Chuy's PR only prefilled the one button as an example and left the other four untouched on purpose, for Gabo to do later.
+
+- [ ] **Step 6: Update `src/components/Marcas.tsx`** — semantic list instead of loose spans
+
+Chuy's finding: nine brand names as bare `<span>`s don't read as a list to a screen reader; a `<ul>/<li>` does ("list of nine items"), and looks identical with `list-style:none` (Tailwind: `list-none`). Change both `<div className="flex flex-wrap gap-2.5">...</div>` blocks (paneles and inversores) to `<ul className="flex flex-wrap gap-2.5 list-none m-0 p-0">`, and each mapped `<span key={marca}>` to `<li key={marca}>`, keeping the same className on the `<li>`/former `<span>` (the pill styling: `bg-white border border-brand-border rounded-full px-[18px] py-2 font-bold text-sm text-brand-navy`).
+
+- [ ] **Step 7: Update `index.html`** — canonical, Open Graph, JSON-LD
+
+Add inside `<head>`, after the existing `<meta name="description">` tag and before Vite's module script tag:
+
+```html
+    <link rel="canonical" href="https://regios-solutions.vercel.app/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Regios Tech Solutions" />
+    <meta property="og:url" content="https://regios-solutions.vercel.app/" />
+    <meta property="og:title" content="Energía solar para tu hogar — Regios Tech Solutions" />
+    <meta
+      property="og:description"
+      content="Venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, N.L. 18 años de experiencia. Cotiza por WhatsApp sin compromiso."
+    />
+    <!-- FALTA og:image — un PNG/JPG de 1200x630px con logo + foto de instalación real. Ver AUDITORIA.md en master. -->
+    <meta name="twitter:card" content="summary" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Regios Tech Solutions",
+        "description": "Venta, instalación y mantenimiento de sistemas fotovoltaicos.",
+        "url": "https://regios-solutions.vercel.app/",
+        "telephone": "+528112095779",
+        "areaServed": "Guadalupe, Nuevo León, México",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Guadalupe",
+          "addressRegion": "Nuevo León",
+          "addressCountry": "MX"
+        },
+        "makesOffer": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalación de sistemas fotovoltaicos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento de sistemas fotovoltaicos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestión de trámite CFE" } }
+        ]
+      }
+    </script>
+    <!-- TODO pedirle a Pablo y agregar arriba: streetAddress, postalCode, geo (lat/long), openingHoursSpecification, image -->
+```
+
+Note: the `og:url`/`og:image`/canonical values above still point at the Vercel URL because that's what's live today — once Task 10's Railway deploy has a confirmed domain, these three values need a follow-up update (out of scope for this task; leave a comment noting it if you want, but don't block on it).
+
+- [ ] **Step 8: Verify in browser**
+
+```bash
+npm run build
+PORT=4173 npm run start > /tmp/verify.log 2>&1 &
+SERVER_PID=$!
+sleep 2
+curl -s -m 10 http://localhost:4173/ | grep -o 'og:title[^>]*' 
+kill $SERVER_PID
+```
+
+Also open the dev server and check visually: both green CTA buttons (hero + cotiza) now show dark text instead of white but are still unmistakably green/WhatsApp-colored; tabbing through the page with keyboard shows a visible focus ring; clicking a header nav link scrolls to a section whose heading isn't hidden under the sticky header.
+
+- [ ] **Step 9: Commit**
+
+```bash
+git add -A
+git commit -m "fix: port tío Chuy's applied audit fixes (contrast, a11y, SEO meta, semantic list)"
+```
