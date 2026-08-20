@@ -1,6 +1,6 @@
 # Regios Tech Solutions — Landing Page
 
-**Live:** https://regios-solutions.vercel.app
+**Live:** _pendiente — deploy a Railway aún no configurado (ver `docs/superpowers/plans/2026-08-19-react-tailwind-migration.md`, Task 10)_
 
 Sitio de una página para **Regios Tech Solutions** (Ing. Pablo Góngora), negocio de venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, Nuevo León.
 
@@ -8,7 +8,7 @@ Primer proyecto real del venture "ayuda a negocios con páginas web" de Gabo (ve
 
 ## Qué es
 
-Sitio estático de una sola página (sin backend, sin build step):
+Sitio de una sola página, construido con React + Tailwind:
 
 - **Hero** — propuesta de valor + 18 años de experiencia + CTA de cotización
 - **Beneficios** — ahorro, energía limpia, garantía
@@ -19,11 +19,14 @@ Sitio estático de una sola página (sin backend, sin build step):
 
 ## Cómo verlo
 
-Abre `index.html` directamente en el navegador — no requiere servidor ni instalación de nada.
+```bash
+npm install
+npm run dev
+```
 
 ## Stack
 
-HTML + CSS + JS vanilla. Sin frameworks, sin dependencias, sin `npm install`. Elegido a propósito: es un sitio de una página para un negocio pequeño, no necesita más.
+Vite + React + TypeScript + Tailwind CSS + `lucide-react` (iconos SVG). Migrado 2026-08-19 desde HTML/CSS/JS vanilla — ver `docs/superpowers/specs/2026-08-19-react-tailwind-migration-design.md` para el porqué.
 
 ## Contenido fuente
 
@@ -31,8 +34,4 @@ Extraído del folleto físico del negocio (`Folleto paneles solares.jpeg`, en el
 
 ## Deploy
 
-Publicado en Vercel bajo la cuenta `gabobarrera00`. Para republicar después de un cambio:
-
-```
-npx vercel deploy --prod
-```
+Publicado en Railway. Conectado al repo de GitHub — cada push a `main` dispara un deploy automático (build: `npm run build`, start: `npm run start`).
