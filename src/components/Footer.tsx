@@ -25,6 +25,8 @@ export default function Footer() {
               href="https://wa.me/528112095779?text=Hola%2C%20vi%20su%20p%C3%A1gina%20en%20la%20secci%C3%B3n%20de%20contacto%20y%20quiero%20hablar%20sobre%20instalaci%C3%B3n%20de%20paneles%20solares."
               target="_blank"
               rel="noopener"
+              data-umami-event="whatsapp-click"
+              data-umami-event-ubicacion="footer"
               className="flex items-center gap-1.5 hover:text-brand-green"
             >
               <MessageCircle className="w-4 h-4" /> 811 209 5779
