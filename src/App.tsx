@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Beneficios from "./components/Beneficios";
 
 export default function App() {
   return (
@@ -7,6 +8,7 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <Beneficios />
       </main>
     </div>
   );
