@@ -1,2 +1,4 @@
 .vercel
 .worktrees
+node_modules/
+dist/

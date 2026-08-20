@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply text-brand-text bg-white leading-[1.5] font-sans;
+}
+
+a {
+  @apply text-inherit no-underline;
+}
+
+h1, h2, h3 {
+  @apply leading-[1.2] m-0 mb-3;
+}
