@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Beneficios from "./components/Beneficios";
 import Servicios from "./components/Servicios";
+import Marcas from "./components/Marcas";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Hero />
         <Beneficios />
         <Servicios />
+        <Marcas />
       </main>
     </div>
   );
