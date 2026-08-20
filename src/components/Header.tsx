@@ -47,7 +47,7 @@ export default function Header() {
           href="https://wa.me/528112095779"
           target="_blank"
           rel="noopener"
-          className="hidden md:inline-block whitespace-nowrap bg-[#25d366] text-on-whatsapp px-[22px] py-3 rounded-full font-bold text-sm border-2 border-transparent transition-transform hover:-translate-y-px hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)]"
+          className="hidden md:inline-block whitespace-nowrap bg-[#25d366] text-on-whatsapp px-[22px] py-3 rounded-full font-bold text-sm border-2 border-transparent transition-[transform,box-shadow] hover:-translate-y-px hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)]"
         >
           WhatsApp
         </a>

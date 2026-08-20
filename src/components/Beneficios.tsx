@@ -14,7 +14,7 @@ export default function Beneficios() {
           <div key={title}>
             <Icon className="w-[30px] h-[30px] text-brand-green mx-auto" />
             <h3 className="text-brand-navy text-lg mt-2">{title}</h3>
-            <p className="m-0 text-[#4b5b76]">{text}</p>
+            <p className="m-0 text-brand-text-soft">{text}</p>
           </div>
         ))}
       </div>

@@ -17,7 +17,7 @@ export default function Hero() {
         <div className="flex justify-center gap-3.5 flex-wrap">
           <a
             href="#cotiza"
-            className="inline-block px-[22px] py-3 rounded-full font-bold text-sm border-2 border-transparent transition-transform hover:-translate-y-px bg-brand-green text-on-green hover:shadow-[0_8px_20px_rgba(47,179,68,0.35)]"
+            className="inline-block px-[22px] py-3 rounded-full font-bold text-sm border-2 border-transparent transition-[transform,box-shadow] hover:-translate-y-px bg-brand-green text-on-green hover:shadow-[0_8px_20px_rgba(47,179,68,0.35)]"
           >
             Cotización sin compromiso
           </a>

@@ -34,4 +34,11 @@ Extraído del folleto físico del negocio (`Folleto paneles solares.jpeg`, en el
 
 ## Deploy
 
-Publicado en Railway. Conectado al repo de GitHub — cada push a `main` dispara un deploy automático (build: `npm run build`, start: `npm run start`).
+Pendiente — el repo aún no está conectado a Railway (ver `docs/superpowers/plans/2026-08-19-react-tailwind-migration.md`, Task 10). Una vez conectado: build `npm run build`, start `npm run start`, deploy automático en cada push a `master`.
+
+**Checklist para el corte a Railway** (hacerlo en orden, no de memoria):
+1. Conectar el repo de GitHub en el dashboard de Railway
+2. Confirmar que el build corre bien con el Node fijado en `engines`
+3. Capturar el dominio que asigna Railway
+4. Actualizar `canonical`, `og:url`, y el `url` del JSON-LD en `index.html` (hoy apuntan a la URL de Vercel — ver más abajo)
+5. Actualizar la línea "Live" de este README

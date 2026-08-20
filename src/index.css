@@ -18,7 +18,7 @@ html {
   scroll-padding-top: 84px;
 }
 
-:focus-visible {
+:where(:focus-visible) {
   outline: 3px solid #1e6fd9;
   outline-offset: 3px;
   border-radius: 6px;
@@ -36,4 +36,8 @@ footer :focus-visible {
     transition: none !important;
     animation: none !important;
   }
+
+  a:hover, button:hover { transform: none !important; }
+
+  html { scroll-behavior: auto; }
 }

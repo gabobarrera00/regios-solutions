@@ -21,7 +21,7 @@ export default function Cotiza() {
               href="https://wa.me/528112095779?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20una%20cotizaci%C3%B3n.%20Le%20env%C3%ADo%20la%20foto%20de%20mi%20recibo%20de%20CFE."
               target="_blank"
               rel="noopener"
-              className="inline-block px-[22px] py-3 rounded-full font-bold text-sm border-2 border-transparent transition-transform hover:-translate-y-px bg-[#25d366] text-on-whatsapp hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)]"
+              className="inline-block px-[22px] py-3 rounded-full font-bold text-sm border-2 border-transparent transition-[transform,box-shadow] hover:-translate-y-px bg-[#25d366] text-on-whatsapp hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)]"
             >
               Enviar por WhatsApp
             </a>
