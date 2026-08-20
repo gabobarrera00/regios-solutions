@@ -1,6 +1,6 @@
 # Regios Tech Solutions — Landing Page
 
-**Live:** https://regios-solutions.vercel.app
+**Live:** _pendiente — deploy a Railway aún no configurado (ver `docs/superpowers/plans/2026-08-19-react-tailwind-migration.md`, Task 10)_
 
 Sitio de una página para **Regios Tech Solutions** (Ing. Pablo Góngora), negocio de venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, Nuevo León.
 
@@ -8,7 +8,7 @@ Primer proyecto real del venture "ayuda a negocios con páginas web" de Gabo (ve
 
 ## Qué es
 
-Sitio estático de una sola página (sin backend, sin build step):
+Sitio de una sola página, construido con React + Tailwind:
 
 - **Hero** — propuesta de valor + 18 años de experiencia + CTA de cotización
 - **Beneficios** — ahorro, energía limpia, garantía
@@ -19,11 +19,14 @@ Sitio estático de una sola página (sin backend, sin build step):
 
 ## Cómo verlo
 
-Abre `index.html` directamente en el navegador — no requiere servidor ni instalación de nada.
+```bash
+npm install
+npm run dev
+```
 
 ## Stack
 
-HTML + CSS + JS vanilla. Sin frameworks, sin dependencias, sin `npm install`. Elegido a propósito: es un sitio de una página para un negocio pequeño, no necesita más.
+Vite + React + TypeScript + Tailwind CSS + `lucide-react` (iconos SVG). Migrado 2026-08-19 desde HTML/CSS/JS vanilla — ver `docs/superpowers/specs/2026-08-19-react-tailwind-migration-design.md` para el porqué.
 
 ## Contenido fuente
 
@@ -31,8 +34,11 @@ Extraído del folleto físico del negocio (`Folleto paneles solares.jpeg`, en el
 
 ## Deploy
 
-Publicado en Vercel bajo la cuenta `gabobarrera00`. Para republicar después de un cambio:
+Pendiente — el repo aún no está conectado a Railway (ver `docs/superpowers/plans/2026-08-19-react-tailwind-migration.md`, Task 10). Una vez conectado: build `npm run build`, start `npm run start`, deploy automático en cada push a `master`.
 
-```
-npx vercel deploy --prod
-```
+**Checklist para el corte a Railway** (hacerlo en orden, no de memoria):
+1. Conectar el repo de GitHub en el dashboard de Railway
+2. Confirmar que el build corre bien con el Node fijado en `engines`
+3. Capturar el dominio que asigna Railway
+4. Actualizar `canonical`, `og:url`, y el `url` del JSON-LD en `index.html` (hoy apuntan a la URL de Vercel — ver más abajo)
+5. Actualizar la línea "Live" de este README

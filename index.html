@@ -1,222 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es-MX">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Regios Tech Solutions — Energía Solar para tu Hogar</title>
-<meta name="description" content="Venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, Nuevo León. 18 años de experiencia. Cotización sin compromiso.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regios Tech Solutions — Energía Solar para tu Hogar</title>
+    <meta
+      name="description"
+      content="Venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, Nuevo León. 18 años de experiencia. Cotización sin compromiso."
+    />
 
-<!-- Una sola URL canónica. Ver AUDITORIA.md #5: apagar GitHub Pages y dejar solo esta. -->
-<link rel="canonical" href="https://regios-solutions.vercel.app/">
+    <link rel="canonical" href="https://regios-solutions.vercel.app/" />
 
-<!-- Vista previa al compartir el enlace. WhatsApp es el canal de venta del negocio,
-     así que esto no es un detalle: es cómo se ve la empresa cuando Pablo pega el link.
-     FALTA og:image — hay que producir un PNG/JPG de 1200x630 px con logo + foto de
-     instalación real y subirlo al repo. Sin imagen la tarjeta se ve pobre. Ver AUDITORIA.md #2. -->
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_MX">
-<meta property="og:site_name" content="Regios Tech Solutions">
-<meta property="og:url" content="https://regios-solutions.vercel.app/">
-<meta property="og:title" content="Energía solar para tu hogar — Regios Tech Solutions">
-<meta property="og:description" content="Venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, N.L. 18 años de experiencia. Cotiza por WhatsApp sin compromiso.">
-<!-- <meta property="og:image" content="https://regios-solutions.vercel.app/og.jpg"> -->
-<meta name="twitter:card" content="summary">
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Regios Tech Solutions" />
+    <meta property="og:url" content="https://regios-solutions.vercel.app/" />
+    <meta property="og:title" content="Energía solar para tu hogar — Regios Tech Solutions" />
+    <meta
+      property="og:description"
+      content="Venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, N.L. 18 años de experiencia. Cotiza por WhatsApp sin compromiso."
+    />
+    <!-- FALTA og:image — un PNG/JPG de 1200x630px con logo + foto de instalación real. Ver AUDITORIA.md en master. -->
+    <meta name="twitter:card" content="summary" />
 
-<link rel="stylesheet" href="style.css">
-
-<!-- Datos estructurados: esto es lo que llena el bloque de mapa en Google cuando
-     alguien busca "paneles solares Guadalupe". Para un negocio local es el canal
-     de adquisición, no un detalle de SEO. Ver AUDITORIA.md #3.
-     Solo lleva datos verificados. Los TODO hay que pedirlos a Pablo — una dirección
-     inventada aquí la publica Google, así que es peor que no ponerla. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Regios Tech Solutions",
-  "description": "Venta, instalación y mantenimiento de sistemas fotovoltaicos.",
-  "url": "https://regios-solutions.vercel.app/",
-  "telephone": "+528112095779",
-  "areaServed": "Guadalupe, Nuevo León, México",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Guadalupe",
-    "addressRegion": "Nuevo León",
-    "addressCountry": "MX"
-  },
-  "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalación de sistemas fotovoltaicos" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento de sistemas fotovoltaicos" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestión de trámite CFE" } }
-  ]
-}
-</script>
-<!-- TODO pedirle a Pablo y agregar arriba:
-     "streetAddress": "calle y número",
-     "postalCode": "código postal",
-     "geo": { "@type": "GeoCoordinates", "latitude": 00.0000, "longitude": -000.0000 },
-     "openingHoursSpecification": [...],
-     "image": "url de una foto real del negocio"
--->
-</head>
-<body>
-
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="#top" class="logo">
-      <span class="logo-mark">☀</span>
-      <span class="logo-text">REGIOS<span class="logo-sub">TECH SOLUTIONS</span></span>
-    </a>
-    <nav class="nav" id="nav">
-      <a href="#servicios">Servicios</a>
-      <a href="#marcas">Marcas</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-    <a class="btn btn-whatsapp header-cta" href="https://wa.me/528112095779" target="_blank" rel="noopener">
-      WhatsApp
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">☰</button>
-  </div>
-</header>
-
-<main id="top">
-
-  <section class="hero">
-    <div class="container hero-inner">
-      <span class="badge">18 años de experiencia</span>
-      <h1>Energía solar para tu hogar,<br><span class="accent">ahorra hoy, disfruta siempre.</span></h1>
-      <p class="hero-sub">Venta, instalación y mantenimiento de sistemas fotovoltaicos. Soluciones inteligentes para un futuro sostenible.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#cotiza">Cotización sin compromiso</a>
-        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="beneficios">
-    <div class="container beneficios-grid">
-      <!-- EJEMPLO: estos tres iconos son SVG en línea. Los de la sección "Servicios"
-           siguen siendo emoji, a propósito, para que compares las dos filas en el
-           navegador. `stroke="currentColor"` hace que hereden el color del texto, así
-           que cambian solos si cambias la marca. `aria-hidden="true"` los saca del
-           lector de pantalla, que es lo correcto para un icono decorativo.
-           Ver AUDITORIA.md #4. -->
-      <div class="beneficio">
-        <svg class="beneficio-icon" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 17.5 9.5 11l3.5 3.5L21 6.5"/>
-          <path d="M15.5 6.5H21v5.5"/>
-        </svg>
-        <h3>Ahorra</h3>
-        <p>en tu recibo de luz</p>
-      </div>
-      <div class="beneficio">
-        <svg class="beneficio-icon" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 21c0-5.5 2.5-9.5 7.5-11.5C19.5 15 16 20 12 21Z"/>
-          <path d="M12 21C8.5 18 4 16 4 10.5 8 11 11 14 12 18Z"/>
-          <path d="M12 21v-3"/>
-        </svg>
-        <h3>Energía</h3>
-        <p>limpia y renovable</p>
-      </div>
-      <div class="beneficio">
-        <svg class="beneficio-icon" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 3l7.5 3v5.5c0 4.5-3 8-7.5 9.5-4.5-1.5-7.5-5-7.5-9.5V6Z"/>
-          <path d="m9 12 2.25 2.25L15.5 10"/>
-        </svg>
-        <h3>Sistemas</h3>
-        <p>con garantía y respaldo</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="servicios" class="servicios">
-    <div class="container">
-      <h2>Nuestros servicios incluyen</h2>
-      <div class="servicios-grid">
-        <div class="servicio-card">
-          <span class="servicio-icon">🏠</span>
-          <p>Sistema llave en mano</p>
-        </div>
-        <div class="servicio-card">
-          <span class="servicio-icon">📋</span>
-          <p>Gestión CFE</p>
-        </div>
-        <div class="servicio-card">
-          <span class="servicio-icon">⭐</span>
-          <p>Equipos Tier 1</p>
-        </div>
-        <div class="servicio-card">
-          <span class="servicio-icon">✅</span>
-          <p>Servicios garantizados</p>
-        </div>
-        <div class="servicio-card">
-          <span class="servicio-icon">👷</span>
-          <p>Instalación profesional certificada</p>
-        </div>
-        <div class="servicio-card">
-          <span class="servicio-icon">🏅</span>
-          <p>Mejores marcas</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="marcas" class="marcas">
-    <div class="container">
-      <h2>Marcas con las que trabajamos</h2>
-
-      <h3 class="marcas-subtitle">Paneles solares</h3>
-      <div class="marcas-list">
-        <span class="marca-chip">JA Solar</span>
-        <span class="marca-chip">Jinko Solar</span>
-        <span class="marca-chip">Canadian Solar</span>
-        <span class="marca-chip">SolaBasic</span>
-      </div>
-
-      <h3 class="marcas-subtitle">Inversores</h3>
-      <div class="marcas-list">
-        <span class="marca-chip">SMA</span>
-        <span class="marca-chip">Growatt</span>
-        <span class="marca-chip">Solis</span>
-        <span class="marca-chip">Fronius</span>
-        <span class="marca-chip">Huawei</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="cotiza" class="cotiza">
-    <div class="container cotiza-inner">
-      <span class="cotiza-icon">📱</span>
-      <div>
-        <h2>¡Cotización sin compromiso!</h2>
-        <p>Para recibir una propuesta personalizada, envíanos por WhatsApp una fotografía clara de la <strong>parte trasera de tu recibo de CFE</strong>. Analizaremos tu consumo y te recomendaremos la mejor solución solar para maximizar tu ahorro.</p>
-        <!-- EJEMPLO: mensaje precargado con ?text=. Ahorra al visitante redactar (donde
-             se pierden prospectos) y, si pones un texto distinto por botón, Pablo sabe
-             por qué sección entró cada uno — atribución gratis. Los otros cuatro
-             enlaces de WhatsApp siguen sin texto. Ver AUDITORIA.md #9. -->
-        <a class="btn btn-whatsapp" href="https://wa.me/528112095779?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20una%20cotizaci%C3%B3n.%20Le%20env%C3%ADo%20la%20foto%20de%20mi%20recibo%20de%20CFE." target="_blank" rel="noopener">
-          Enviar por WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer id="contacto" class="site-footer">
-  <div class="container footer-inner">
-    <div>
-      <span class="logo-text footer-logo">REGIOS<span class="logo-sub">TECH SOLUTIONS</span></span>
-      <p class="footer-tagline">Inversión inteligente, beneficios para toda la vida.</p>
-    </div>
-    <div class="footer-info">
-      <p>📍 Guadalupe, Nuevo León, México</p>
-      <p>Ing. Pablo Góngora</p>
-      <p><a href="https://wa.me/528112095779" target="_blank" rel="noopener">💬 811 209 5779</a></p>
-    </div>
-  </div>
-</footer>
-
-<script src="script.js"></script>
-</body>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Regios Tech Solutions",
+        "description": "Venta, instalación y mantenimiento de sistemas fotovoltaicos.",
+        "url": "https://regios-solutions.vercel.app/",
+        "telephone": "+528112095779",
+        "areaServed": "Guadalupe, Nuevo León, México",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Guadalupe",
+          "addressRegion": "Nuevo León",
+          "addressCountry": "MX"
+        },
+        "makesOffer": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalación de sistemas fotovoltaicos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento de sistemas fotovoltaicos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestión de trámite CFE" } }
+        ]
+      }
+    </script>
+    <!-- TODO pedirle a Pablo y agregar arriba: streetAddress, postalCode, geo (lat/long), openingHoursSpecification, image -->
+    <!-- TODO: og:url / og:image / canonical apuntan a Vercel; actualizar cuando el dominio de Railway (Task 10) esté confirmado. -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

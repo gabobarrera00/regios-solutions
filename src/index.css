@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply text-brand-text bg-white leading-[1.5] font-sans;
+}
+
+a {
+  @apply text-inherit no-underline;
+}
+
+h1, h2, h3 {
+  @apply leading-[1.2] m-0 mb-3;
+}
+
+html {
+  scroll-padding-top: 84px;
+}
+
+:where(:focus-visible) {
+  outline: 3px solid #1e6fd9;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+header :focus-visible,
+.hero-section :focus-visible,
+.cotiza-section :focus-visible,
+footer :focus-visible {
+  outline-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  a:hover, button:hover { transform: none !important; }
+
+  html { scroll-behavior: auto; }
+}
