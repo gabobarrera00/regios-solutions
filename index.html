@@ -5,7 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Regios Tech Solutions — Energía Solar para tu Hogar</title>
 <meta name="description" content="Venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, Nuevo León. 18 años de experiencia. Cotización sin compromiso.">
+
+<!-- Una sola URL canónica. Ver AUDITORIA.md #5: apagar GitHub Pages y dejar solo esta. -->
+<link rel="canonical" href="https://regios-solutions.vercel.app/">
+
+<!-- Vista previa al compartir el enlace. WhatsApp es el canal de venta del negocio,
+     así que esto no es un detalle: es cómo se ve la empresa cuando Pablo pega el link.
+     FALTA og:image — hay que producir un PNG/JPG de 1200x630 px con logo + foto de
+     instalación real y subirlo al repo. Sin imagen la tarjeta se ve pobre. Ver AUDITORIA.md #2. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="Regios Tech Solutions">
+<meta property="og:url" content="https://regios-solutions.vercel.app/">
+<meta property="og:title" content="Energía solar para tu hogar — Regios Tech Solutions">
+<meta property="og:description" content="Venta, instalación y mantenimiento de sistemas fotovoltaicos en Guadalupe, N.L. 18 años de experiencia. Cotiza por WhatsApp sin compromiso.">
+<!-- <meta property="og:image" content="https://regios-solutions.vercel.app/og.jpg"> -->
+<meta name="twitter:card" content="summary">
+
 <link rel="stylesheet" href="style.css">
+
+<!-- Datos estructurados: esto es lo que llena el bloque de mapa en Google cuando
+     alguien busca "paneles solares Guadalupe". Para un negocio local es el canal
+     de adquisición, no un detalle de SEO. Ver AUDITORIA.md #3.
+     Solo lleva datos verificados. Los TODO hay que pedirlos a Pablo — una dirección
+     inventada aquí la publica Google, así que es peor que no ponerla. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Regios Tech Solutions",
+  "description": "Venta, instalación y mantenimiento de sistemas fotovoltaicos.",
+  "url": "https://regios-solutions.vercel.app/",
+  "telephone": "+528112095779",
+  "areaServed": "Guadalupe, Nuevo León, México",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Guadalupe",
+    "addressRegion": "Nuevo León",
+    "addressCountry": "MX"
+  },
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalación de sistemas fotovoltaicos" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento de sistemas fotovoltaicos" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestión de trámite CFE" } }
+  ]
+}
+</script>
+<!-- TODO pedirle a Pablo y agregar arriba:
+     "streetAddress": "calle y número",
+     "postalCode": "código postal",
+     "geo": { "@type": "GeoCoordinates", "latitude": 00.0000, "longitude": -000.0000 },
+     "openingHoursSpecification": [...],
+     "image": "url de una foto real del negocio"
+-->
 </head>
 <body>
 
@@ -23,7 +75,7 @@
     <a class="btn btn-whatsapp header-cta" href="https://wa.me/528112095779" target="_blank" rel="noopener">
       WhatsApp
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">☰</button>
   </div>
 </header>
 
@@ -43,18 +95,34 @@
 
   <section class="beneficios">
     <div class="container beneficios-grid">
+      <!-- EJEMPLO: estos tres iconos son SVG en línea. Los de la sección "Servicios"
+           siguen siendo emoji, a propósito, para que compares las dos filas en el
+           navegador. `stroke="currentColor"` hace que hereden el color del texto, así
+           que cambian solos si cambias la marca. `aria-hidden="true"` los saca del
+           lector de pantalla, que es lo correcto para un icono decorativo.
+           Ver AUDITORIA.md #4. -->
       <div class="beneficio">
-        <span class="beneficio-icon">📈</span>
+        <svg class="beneficio-icon" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 17.5 9.5 11l3.5 3.5L21 6.5"/>
+          <path d="M15.5 6.5H21v5.5"/>
+        </svg>
         <h3>Ahorra</h3>
         <p>en tu recibo de luz</p>
       </div>
       <div class="beneficio">
-        <span class="beneficio-icon">🌱</span>
+        <svg class="beneficio-icon" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 21c0-5.5 2.5-9.5 7.5-11.5C19.5 15 16 20 12 21Z"/>
+          <path d="M12 21C8.5 18 4 16 4 10.5 8 11 11 14 12 18Z"/>
+          <path d="M12 21v-3"/>
+        </svg>
         <h3>Energía</h3>
         <p>limpia y renovable</p>
       </div>
       <div class="beneficio">
-        <span class="beneficio-icon">🛡</span>
+        <svg class="beneficio-icon" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3l7.5 3v5.5c0 4.5-3 8-7.5 9.5-4.5-1.5-7.5-5-7.5-9.5V6Z"/>
+          <path d="m9 12 2.25 2.25L15.5 10"/>
+        </svg>
         <h3>Sistemas</h3>
         <p>con garantía y respaldo</p>
       </div>
@@ -122,7 +190,11 @@
       <div>
         <h2>¡Cotización sin compromiso!</h2>
         <p>Para recibir una propuesta personalizada, envíanos por WhatsApp una fotografía clara de la <strong>parte trasera de tu recibo de CFE</strong>. Analizaremos tu consumo y te recomendaremos la mejor solución solar para maximizar tu ahorro.</p>
-        <a class="btn btn-whatsapp" href="https://wa.me/528112095779" target="_blank" rel="noopener">
+        <!-- EJEMPLO: mensaje precargado con ?text=. Ahorra al visitante redactar (donde
+             se pierden prospectos) y, si pones un texto distinto por botón, Pablo sabe
+             por qué sección entró cada uno — atribución gratis. Los otros cuatro
+             enlaces de WhatsApp siguen sin texto. Ver AUDITORIA.md #9. -->
+        <a class="btn btn-whatsapp" href="https://wa.me/528112095779?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20una%20cotizaci%C3%B3n.%20Le%20env%C3%ADo%20la%20foto%20de%20mi%20recibo%20de%20CFE." target="_blank" rel="noopener">
           Enviar por WhatsApp
         </a>
       </div>
