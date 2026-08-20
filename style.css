@@ -10,13 +10,28 @@
   --text-soft: #4b5b76;
   --border: #e3e9f2;
   --radius: 14px;
+
+  /* Tinta oscura para usar ENCIMA de los verdes de marca. Blanco sobre estos
+     verdes falla el contraste mínimo de WCAG AA (2.74:1 y 1.98:1 medidos).
+     Con esta tinta dan 6.03:1 y 7.49:1 y el botón sigue viéndose igual de verde.
+     Ver AUDITORIA.md #1. */
+  --on-green: #08240f;
+  --on-whatsapp: #0b2e13;
 }
 
 * { box-sizing: border-box; }
 
+/* El header es sticky y mide 68px. Sin esto, al dar clic en un enlace del menú
+   el navegador deja el título de la sección tapado debajo del header.
+   Ver AUDITORIA.md #7b. */
+html { scroll-padding-top: 84px; }
+
 body {
   margin: 0;
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* Primero la fuente del sistema, y las específicas como respaldo. Antes iba
+     "Segoe UI" al frente, que es la de Windows, así que en Mac y iPhone se
+     ignoraba. Ver AUDITORIA.md #11. */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.5;
@@ -117,9 +132,25 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
 
 .btn:hover { transform: translateY(-1px); }
 
+/* :focus-visible solo se dibuja cuando la persona navega con teclado — quien da
+   clic con el mouse no ve el anillo, así que no hay costo estético. Sin esto,
+   tabular por la página no muestra nada. Ver AUDITORIA.md #6. */
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.site-header :focus-visible,
+.hero :focus-visible,
+.cotiza :focus-visible,
+.site-footer :focus-visible {
+  outline-color: #fff;
+}
+
 .btn-primary {
   background: var(--green);
-  color: #fff;
+  color: var(--on-green);
 }
 
 .btn-primary:hover { box-shadow: 0 8px 20px rgba(47,179,68,0.35); }
@@ -132,7 +163,7 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
 
 .btn-whatsapp {
   background: #25d366;
-  color: #fff;
+  color: var(--on-whatsapp);
 }
 
 .btn-whatsapp:hover { box-shadow: 0 8px 20px rgba(37,211,102,0.35); }
@@ -200,7 +231,9 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
   text-align: center;
 }
 
-.beneficio-icon { font-size: 30px; }
+/* Los SVG heredan este color con stroke="currentColor". Cambia --green y los tres
+   iconos cambian solos: eso es justo lo que un emoji no puede hacer. */
+.beneficio-icon { color: var(--green); display: block; margin: 0 auto 8px; }
 
 .beneficio h3 { color: var(--navy); font-size: 18px; }
 
@@ -333,17 +366,31 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
   .servicios-grid { grid-template-columns: repeat(2, 1fr); }
   .cotiza-inner { flex-direction: column; border-radius: 16px; padding: 28px; }
   .footer-inner { flex-direction: column; }
+
+  /* Esta regla estaba FUERA de la media query. Como tiene más especificidad que
+     `.nav { display:none }` y va después en el archivo, ganaba también en
+     escritorio: abrir el menú en móvil y ensanchar la ventana dejaba el panel
+     flotante pegado encima del contenido. Su lugar es aquí dentro.
+     Ver AUDITORIA.md #7a. */
+  .nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--navy);
+    padding: 16px 24px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
 }
 
-.nav.open {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 68px;
-  left: 0;
-  right: 0;
-  background: var(--navy);
-  padding: 16px 24px;
-  gap: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+/* Hay personas a las que el movimiento en pantalla les provoca mareo o migraña.
+   Es una preferencia del sistema operativo y respetarla son cuatro líneas.
+   Ya lo hiciste bien en propuesta-vaconsa; aquí faltaba. Ver AUDITORIA.md #6. */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  .btn:hover { transform: none; }
+  html { scroll-behavior: auto; }
 }
